@@ -1,0 +1,74 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #FFB6C1, #FF69B4); /* Soft Pink Gradient */
+}
+.container {
+    width: 350px;
+    padding: 25px;
+    background: white;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+h2 {
+    margin-bottom: 15px;
+    color: #FF6347; /* Tomato Red */
+}
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(45deg, #FFD700, #FF6347); /* Vibrant Yellow-Orange Gradient */
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+button:hover {
+    background: linear-gradient(45deg, #FF6347, #FFD700);
+}
+.toggle-link {
+    margin-top: 10px;
+    color: #00BFFF; /* Deep Sky Blue */
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+}
+.toggle-link:hover {
+    text-decoration: underline;
+}
+.forgot-password {
+    margin-top: 10px;
+    color: #32CD32; /* Lime Green */
+    cursor: pointer;
+    font-size: 13px;
+}
+.forgot-password:hover {
+    text-decoration: underline;
+}
+.hidden {
+    display: none;
+}
