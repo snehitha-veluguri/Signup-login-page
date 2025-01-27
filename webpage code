@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Sign Up</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #FFB6C1, #FF69B4); /* Soft Pink Gradient */
+        }
+        .container {
+            width: 350px;
+            padding: 25px;
+            background: white;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            text-align: center;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        h2 {
+            margin-bottom: 15px;
+            color: #FF6347; /* Tomato Red */
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(45deg, #FFD700, #FF6347); /* Vibrant Yellow-Orange Gradient */
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: linear-gradient(45deg, #FF6347, #FFD700);
+        }
+        .toggle-link {
+            margin-top: 10px;
+            color: #00BFFF; /* Deep Sky Blue */
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .toggle-link:hover {
+            text-decoration: underline;
+        }
+        .forgot-password {
+            margin-top: 10px;
+            color: #32CD32; /* Lime Green */
+            cursor: pointer;
+            font-size: 13px;
+        }
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2 id="form-title">Login</h2>
+
+        <!-- Login/Signup Form -->
+        <form id="auth-form">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <input type="email" id="email" placeholder="Email (only for Sign Up)" class="hidden">
+            <button type="submit">Submit</button>
+        </form>
+
+        <p class="forgot-password" onclick="showForgotPassword()">Forgot Password?</p>
+        <p class="toggle-link" onclick="toggleForm()">Don't have an account? Sign Up</p>
+
+        <!-- Forgot Password Form -->
+        <form id="forgot-password-form" class="hidden">
+            <h2>Reset Password</h2>
+            <input type="text" id="reset-username" placeholder="Username" required>
+            <input type="password" id="new-password" placeholder="New Password" required>
+            <button type="submit">Reset Password</button>
+            <p class="toggle-link" onclick="hideForgotPassword()">Back to Login</p>
+        </form>
+    </div>
+
+    <script>
+        let isSignUp = false;
+
+        function toggleForm() {
+            isSignUp = !isSignUp;
+            document.getElementById("form-title").innerText = isSignUp ? "Sign Up" : "Login";
+            document.getElementById("email").classList.toggle("hidden", !isSignUp);
+            document.querySelector(".toggle-link").innerHTML = isSignUp 
+                ? "Already have an account? Login" 
+                : "Don't have an account? Sign Up";
+        }
+
+        function showForgotPassword() {
+            document.getElementById("auth-form").classList.add("hidden");
+            document.querySelector(".forgot-password").classList.add("hidden");
+            document.querySelector(".toggle-link").classList.add("hidden");
+            document.getElementById("forgot-password-form").classList.remove("hidden");
+        }
+
+        function hideForgotPassword() {
+            document.getElementById("auth-form").classList.remove("hidden");
+            document.querySelector(".forgot-password").classList.remove("hidden");
+            document.querySelector(".toggle-link").classList.remove("hidden");
+            document.getElementById("forgot-password-form").classList.add("hidden");
+        }
+
+        document.getElementById("auth-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+            let email = document.getElementById("email").value;
+
+            if (isSignUp && email.trim() === "") {
+                alert("Please enter your email for sign-up.");
+                return;
+            }
+
+            alert(isSignUp ? "Sign Up Successful!" : "Login Successful!");
+        });
+
+        document.getElementById("forgot-password-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let resetUsername = document.getElementById("reset-username").value;
+            let newPassword = document.getElementById("new-password").value;
+
+            if (newPassword.trim() === "") {
+                alert("Please enter a new password.");
+                return;
+            }
+
+            alert("Password Reset Successful! You can now log in with your new password.");
+            hideForgotPassword();
+        });
+    </script>
+
+</body>
+</html>
