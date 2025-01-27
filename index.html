@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Sign Up</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <h2 id="form-title">Login</h2>
+
+        <!-- Login/Signup Form -->
+        <form id="auth-form">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <input type="email" id="email" placeholder="Email (only for Sign Up)" class="hidden">
+            <button type="submit">Submit</button>
+        </form>
+
+        <p class="forgot-password" onclick="showForgotPassword()">Forgot Password?</p>
+        <p class="toggle-link" onclick="toggleForm()">Don't have an account? Sign Up</p>
+
+        <!-- Forgot Password Form -->
+        <form id="forgot-password-form" class="hidden">
+            <h2>Reset Password</h2>
+            <input type="text" id="reset-username" placeholder="Username" required>
+            <input type="password" id="new-password" placeholder="New Password" required>
+            <button type="submit">Reset Password</button>
+            <p class="toggle-link" onclick="hideForgotPassword()">Back to Login</p>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
